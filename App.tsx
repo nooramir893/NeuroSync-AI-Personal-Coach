@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LandingScreen } from './components/LandingScreen';
 import { WelcomeLandingScreen } from './components/WelcomeLandingScreen';
 import { RecordingScreen } from './components/RecordingScreen';
@@ -17,6 +17,14 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userName, setUserName] = useState('');
+  const [backendMessage, setBackendMessage] = useState('');
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/')
+      .then(res => res.json())
+      .then(data => setBackendMessage(data.message))
+      .catch(err => console.error('Backend connection failed', err));
+  }, []);
 
   const navigateToScreen = (screen: Screen) => {
     setCurrentScreen(screen);
@@ -89,6 +97,11 @@ export default function App() {
         {renderScreen()}
       </div>
       {isAuthenticated && <BottomNav currentScreen={currentScreen} onNavigate={navigateToScreen} darkMode={darkMode} />}
+      {backendMessage && (
+        <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg text-sm z-50">
+          {backendMessage}
+        </div>
+      )}
     </div>
   );
 }
