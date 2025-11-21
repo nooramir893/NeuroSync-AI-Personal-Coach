@@ -3,7 +3,7 @@
 
 
 # **🛰️ About Team**
-Meet the brilliant minds behind Space-Ninjas, a team dedicated to tackling space debris challenges using AI and cutting-edge technologies:
+Meet the brilliant minds behind NeuroSync AI, a team dedicated to tackling space debris challenges using AI and cutting-edge technologies:
 | Name       | LinkedIn Profiles           | GitHub Handle |
 |------------|---------------|--------------|
 | Noor-ul-Ain Amir | [Noor-ul-Ain Amir](https://www.linkedin.com/in/noor-ul-ain-amir-696a49333/) | [@noorulainamir](https://github.com/nooramir893) |
