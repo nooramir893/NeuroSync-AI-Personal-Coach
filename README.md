@@ -13,4 +13,8 @@ Meet the brilliant minds behind NeuroSync AI, a team dedicated to tackling space
 | Dheeraj Kumar | [Dheeraj Kumar](https://www.linkedin.com/in/dheeraj-kumar-b21a741a2/)  | [@dheerajkumar](https://github.com/dheerajkumar47) |
 | Muhammad Zain Bashir |  [Muhammad Zain Bashir](https://www.linkedin.com/in/muhammad-zain-bashir-a04511323/) | [@muhammadzainbashir](https://github.com/zyrox443) |
 
+### 🚀 *How to run:* 
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
 # **🤖 About Project**
