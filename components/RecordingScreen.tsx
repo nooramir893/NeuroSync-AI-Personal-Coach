@@ -1,30 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Mic, Brain } from 'lucide-react';
+import { X, Brain } from 'lucide-react';
 import { Button } from './ui/button';
-import { WaveformAnimation } from './WaveformAnimation';
+import { AudioRecorder } from './AudioRecorder';
 
 interface RecordingScreenProps {
   onComplete: () => void;
   onCancel: () => void;
+  userId?: string;
 }
 
-export function RecordingScreen({ onComplete, onCancel }: RecordingScreenProps) {
+export function RecordingScreen({ onComplete, onCancel, userId = 'demo-user' }: RecordingScreenProps) {
   const [transcription, setTranscription] = useState('');
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    // Simulate transcription appearing
-    const transcriptionTimer = setTimeout(() => {
-      setTranscription('I feel pretty energized today but a bit anxious about my presentation...');
+  const handleTranscriptionComplete = (text: string) => {
+    setTranscription(text);
+    // Automatically proceed to processing after 2 seconds
+    setTimeout(() => {
+      onComplete();
     }, 2000);
+  };
 
-    return () => {
-      clearTimeout(transcriptionTimer);
-    };
-  }, []);
-
-  const handleStopRecording = () => {
-    onComplete();
+  const handleError = (errorMessage: string) => {
+    setError(errorMessage);
   };
 
   return (
@@ -39,7 +38,7 @@ export function RecordingScreen({ onComplete, onCancel }: RecordingScreenProps) 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center justify-center gap-3 mb-12"
+          className="flex items-center justify-center gap-3 mb-8"
         >
           <motion.div
             animate={{
@@ -54,13 +53,13 @@ export function RecordingScreen({ onComplete, onCancel }: RecordingScreenProps) 
           >
             <Brain className="size-8 text-white" />
           </motion.div>
-          <h1 className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
             NeuroSync AI
           </h1>
         </motion.div>
 
         {/* Cancel button */}
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-end mb-6">
           <Button
             variant="ghost"
             size="sm"
@@ -71,66 +70,63 @@ export function RecordingScreen({ onComplete, onCancel }: RecordingScreenProps) 
           </Button>
         </div>
 
-        {/* Recording button - clickable to stop */}
-        <button
-          onClick={handleStopRecording}
-          className="relative w-64 h-64 mx-auto mb-8 cursor-pointer group"
+        {/* Instructions */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-8"
         >
-          {/* Animated pulse rings */}
-          <motion.div
-            className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 opacity-20"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0, 0.3],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 opacity-20"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0, 0.3],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-          />
+          <h2 className="text-xl font-semibold text-slate-800 mb-2">
+            Record Your Mental Health Check-In
+          </h2>
+          <p className="text-slate-600 text-sm">
+            Speak naturally about how you're feeling. Your voice will be analyzed to provide personalized insights.
+          </p>
+        </motion.div>
 
-          {/* Main button */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 shadow-2xl group-hover:scale-105 transition-transform flex flex-col items-center justify-center">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <Mic className="size-16 text-white mb-4" />
-            </motion.div>
-            <div className="text-white text-xl">Recording...</div>
-            <div className="text-white/80 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-              Tap to stop
-            </div>
-          </div>
-        </button>
+        {/* Audio Recorder Component */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mb-6"
+        >
+          <AudioRecorder
+            userId={userId}
+            onTranscriptionComplete={handleTranscriptionComplete}
+            onError={handleError}
+          />
+        </motion.div>
 
-        {/* Waveform */}
-        <div className="mb-6">
-          <WaveformAnimation isActive={true} />
-        </div>
+        {/* Error Display */}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg"
+          >
+            <p className="text-red-600 text-sm">{error}</p>
+          </motion.div>
+        )}
+
+        {/* Transcription Display */}
+        {transcription && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 p-4 bg-teal-50 border border-teal-200 rounded-lg"
+          >
+            <h3 className="text-sm font-semibold text-teal-800 mb-2">Transcription:</h3>
+            <p className="text-slate-700 text-sm italic">{transcription}</p>
+            <p className="text-teal-600 text-xs mt-2">Processing your insights...</p>
+          </motion.div>
+        )}
 
         {/* Microcopy */}
-        <p className="text-slate-500 text-sm">Speak naturally • Tap circle to stop recording</p>
+        <p className="text-slate-500 text-xs mt-6">
+          Your privacy is protected • Audio is securely stored
+        </p>
       </motion.div>
     </div>
   );
