@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { X, Mic, Brain } from 'lucide-react';
 import { Button } from './ui/button';
 import { WaveformAnimation } from './WaveformAnimation';

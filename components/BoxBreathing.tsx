@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -51,9 +51,9 @@ export function BoxBreathing() {
   // Calculate scale based on phase and time
   const getCircleScale = () => {
     if (!isActive) return 0.7;
-    
+
     const progress = (4 - counter) / 4; // 0 to 1 as counter goes 4->3->2->1
-    
+
     if (phase === 'inhale') {
       return 0.6 + (0.4 * progress); // Grows from 0.6 to 1.0
     } else if (phase === 'exhale') {
@@ -66,9 +66,9 @@ export function BoxBreathing() {
 
   const getGlowScale = () => {
     if (!isActive) return 0.7;
-    
+
     const progress = (4 - counter) / 4;
-    
+
     if (phase === 'inhale') {
       return 0.6 + (0.5 * progress); // 0.6 to 1.1
     } else if (phase === 'exhale') {
@@ -152,7 +152,7 @@ export function BoxBreathing() {
               }}
               animate={{
                 scale: isActive && currentPhaseIndex === corner ? [1, 1.5, 1] : 1,
-                boxShadow: isActive && currentPhaseIndex === corner 
+                boxShadow: isActive && currentPhaseIndex === corner
                   ? ['0 0 12px rgba(45,212,191,0.4)', '0 0 20px rgba(45,212,191,0.7)', '0 0 12px rgba(45,212,191,0.4)']
                   : '0 0 12px rgba(45,212,191,0.4)',
               }}

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Brain, Sparkles, Activity, Heart, Zap } from 'lucide-react';
 
 interface ProcessingScreenProps {

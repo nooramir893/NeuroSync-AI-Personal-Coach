@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { User, Palette, HelpCircle, Shield, ChevronDown, LogOut, X, Mail, Calendar } from 'lucide-react';
 import { Switch } from './ui/switch';
 import { Button } from './ui/button';
@@ -190,9 +190,8 @@ export function SettingsScreen({ darkMode, onToggleDarkMode, onLogout, userName 
                   <div className="flex items-center justify-between w-full p-4 rounded-2xl hover:bg-slate-50 transition-colors">
                     <p className="text-slate-900 text-sm text-left">{faq.question}</p>
                     <ChevronDown
-                      className={`size-5 text-slate-600 transition-transform ${
-                        faqOpen === index ? 'rotate-180' : ''
-                      }`}
+                      className={`size-5 text-slate-600 transition-transform ${faqOpen === index ? 'rotate-180' : ''
+                        }`}
                     />
                   </div>
                 </CollapsibleTrigger>

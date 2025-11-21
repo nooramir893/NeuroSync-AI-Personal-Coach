@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Brain, Sparkles, User, LogOut, Settings, X } from 'lucide-react';
 import { RecordButton } from './RecordButton';
 import { WaveformAnimation } from './WaveformAnimation';
@@ -53,7 +53,7 @@ export function LandingScreen({ onStartRecording, userName, onNavigateToSettings
               }}
               className="absolute inset-0 bg-gradient-to-br from-teal-400 to-blue-400 rounded-full blur-md"
             />
-            
+
             {/* Avatar */}
             <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-teal-400 to-blue-400 flex items-center justify-center text-white shadow-lg border-2 border-white/50 backdrop-blur-sm">
               <span className="font-semibold text-sm md:text-base">
@@ -79,7 +79,7 @@ export function LandingScreen({ onStartRecording, userName, onNavigateToSettings
             onClick={() => setShowProfileMenu(false)}
             className="fixed inset-0 z-30"
           />
-          
+
           {/* Menu */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: -10 }}

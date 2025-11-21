@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Zap, Play, Pause, RotateCcw, Check, Brain } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState, useEffect } from 'react';
@@ -126,13 +126,12 @@ export function EnergySurgeWorkout({ onBack, onComplete }: EnergySurgeWorkoutPro
             {exercises.map((_, index) => (
               <div
                 key={index}
-                className={`h-1.5 flex-1 rounded-full transition-colors ${
-                  completedExercises.includes(index)
+                className={`h-1.5 flex-1 rounded-full transition-colors ${completedExercises.includes(index)
                     ? 'bg-gradient-to-r from-teal-400 to-blue-400'
                     : index === currentExercise
-                    ? 'bg-gradient-to-r from-orange-400 to-red-400'
-                    : 'bg-slate-200'
-                }`}
+                      ? 'bg-gradient-to-r from-orange-400 to-red-400'
+                      : 'bg-slate-200'
+                  }`}
               />
             ))}
           </div>
@@ -162,9 +161,8 @@ export function EnergySurgeWorkout({ onBack, onComplete }: EnergySurgeWorkoutPro
                     strokeWidth="8"
                     fill="none"
                     strokeDasharray={`${2 * Math.PI * 88}`}
-                    strokeDashoffset={`${
-                      2 * Math.PI * 88 * (1 - timeLeft / exercises[currentExercise].duration)
-                    }`}
+                    strokeDashoffset={`${2 * Math.PI * 88 * (1 - timeLeft / exercises[currentExercise].duration)
+                      }`}
                     className="transition-all duration-1000"
                     strokeLinecap="round"
                   />
@@ -239,29 +237,26 @@ export function EnergySurgeWorkout({ onBack, onComplete }: EnergySurgeWorkoutPro
             {exercises.map((exercise, index) => (
               <li
                 key={index}
-                className={`flex items-center justify-between p-3 rounded-2xl transition-colors ${
-                  index === currentExercise
+                className={`flex items-center justify-between p-3 rounded-2xl transition-colors ${index === currentExercise
                     ? 'bg-gradient-to-r from-orange-50/50 to-red-50/50'
                     : completedExercises.includes(index)
-                    ? 'bg-gradient-to-r from-teal-50/50 to-blue-50/50'
-                    : 'bg-slate-50/30'
-                }`}
+                      ? 'bg-gradient-to-r from-teal-50/50 to-blue-50/50'
+                      : 'bg-slate-50/30'
+                  }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    completedExercises.includes(index)
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${completedExercises.includes(index)
                       ? 'bg-gradient-to-br from-teal-400/30 to-blue-400/30'
                       : 'bg-slate-200/50'
-                  }`}>
+                    }`}>
                     {completedExercises.includes(index) ? (
                       <Check className="size-4 text-teal-500" />
                     ) : (
                       <span className="text-slate-500 text-sm">{index + 1}</span>
                     )}
                   </div>
-                  <span className={`text-sm ${
-                    completedExercises.includes(index) ? 'text-slate-400 line-through' : 'text-slate-600'
-                  }`}>
+                  <span className={`text-sm ${completedExercises.includes(index) ? 'text-slate-400 line-through' : 'text-slate-600'
+                    }`}>
                     {exercise.name}
                   </span>
                 </div>

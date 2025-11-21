@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, Calendar, Play, X, Zap, Target, Music, Wind, Clock, Lightbulb, Mic } from 'lucide-react';
 import { Button } from './ui/button';
 import { MoodGraph } from './MoodGraph';
@@ -110,7 +110,7 @@ export function HistoryScreen({ onRerunCheckIn }: HistoryScreenProps) {
   const [selectedEntry, setSelectedEntry] = useState<number | null>(null);
 
   const getIcon = (iconName: string) => {
-    switch(iconName) {
+    switch (iconName) {
       case 'Zap': return <Zap className="size-5 text-orange-500" />;
       case 'Target': return <Target className="size-5 text-teal-500" />;
       case 'Music': return <Music className="size-5 text-purple-500" />;
@@ -210,13 +210,12 @@ export function HistoryScreen({ onRerunCheckIn }: HistoryScreenProps) {
                         initial={{ width: 0 }}
                         animate={{ width: `${entry.energyLevel}%` }}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                        className={`h-full rounded-full ${
-                          entry.energyLevel > 70
+                        className={`h-full rounded-full ${entry.energyLevel > 70
                             ? 'bg-gradient-to-r from-teal-500 to-green-500'
                             : entry.energyLevel > 40
-                            ? 'bg-gradient-to-r from-blue-500 to-teal-500'
-                            : 'bg-gradient-to-r from-purple-500 to-blue-500'
-                        }`}
+                              ? 'bg-gradient-to-r from-blue-500 to-teal-500'
+                              : 'bg-gradient-to-r from-purple-500 to-blue-500'
+                          }`}
                       />
                     </div>
                   </div>
@@ -312,13 +311,12 @@ export function HistoryScreen({ onRerunCheckIn }: HistoryScreenProps) {
                         initial={{ width: 0 }}
                         animate={{ width: `${historyData[selectedEntry].energyLevel}%` }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className={`h-full rounded-full ${
-                          historyData[selectedEntry].energyLevel > 70
+                        className={`h-full rounded-full ${historyData[selectedEntry].energyLevel > 70
                             ? 'bg-gradient-to-r from-teal-500 to-green-500'
                             : historyData[selectedEntry].energyLevel > 40
-                            ? 'bg-gradient-to-r from-blue-500 to-teal-500'
-                            : 'bg-gradient-to-r from-purple-500 to-blue-500'
-                        }`}
+                              ? 'bg-gradient-to-r from-blue-500 to-teal-500'
+                              : 'bg-gradient-to-r from-purple-500 to-blue-500'
+                          }`}
                       />
                     </div>
                   </div>

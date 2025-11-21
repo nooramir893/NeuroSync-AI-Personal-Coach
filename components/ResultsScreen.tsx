@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { RefreshCw, Save, Zap, Target, Music, Lightbulb, TrendingUp, Wind, ArrowLeft, Brain, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { BoxBreathing } from './BoxBreathing';
@@ -33,7 +33,7 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
             <Brain className="size-6 text-teal-500" />
             <span className="text-slate-600">NeuroSync</span>
           </div>
-          
+
           {onBack && (
             <motion.button
               onClick={onBack}
@@ -68,13 +68,13 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
                 <p className="text-slate-500 text-sm">AI Analysis from voice input</p>
               </div>
             </div>
-            
+
             <div className="space-y-4">
               {/* What we detected */}
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-[inset_2px_2px_8px_rgba(163,177,198,0.05)]">
                 <p className="text-slate-500 text-sm mb-2">What I'm sensing:</p>
                 <p className="text-slate-700">
-                  You're feeling <span className="text-teal-600">anxious and energized</span> about your upcoming presentation. 
+                  You're feeling <span className="text-teal-600">anxious and energized</span> about your upcoming presentation.
                   Your voice shows signs of nervous anticipation mixed with determination.
                 </p>
               </div>
@@ -83,8 +83,8 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-[inset_2px_2px_8px_rgba(163,177,198,0.05)]">
                 <p className="text-slate-500 text-sm mb-2">How this plan helps:</p>
                 <p className="text-slate-700">
-                  This plan is designed to <span className="text-blue-600">transform your nervous energy into focused confidence</span>. 
-                  The workout will release tension, the breathing exercise will calm your mind, and the habit will 
+                  This plan is designed to <span className="text-blue-600">transform your nervous energy into focused confidence</span>.
+                  The workout will release tension, the breathing exercise will calm your mind, and the habit will
                   channel your energy productively. You'll feel more centered and prepared.
                 </p>
               </div>
@@ -128,11 +128,10 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
             <Button
               onClick={() => setShowWorkout(true)}
               disabled={workoutCompleted}
-              className={`w-full rounded-2xl shadow-[4px_4px_12px_rgba(251,146,60,0.2),-2px_-2px_8px_rgba(255,255,255,0.5)] border-0 ${
-                workoutCompleted
+              className={`w-full rounded-2xl shadow-[4px_4px_12px_rgba(251,146,60,0.2),-2px_-2px_8px_rgba(255,255,255,0.5)] border-0 ${workoutCompleted
                   ? 'bg-gradient-to-r from-teal-400/60 to-blue-400/60 text-white cursor-not-allowed opacity-70'
                   : 'bg-gradient-to-r from-orange-400/60 to-red-400/60 hover:from-orange-400/70 hover:to-red-400/70 text-white'
-              }`}
+                }`}
             >
               {workoutCompleted ? (
                 <>
@@ -167,18 +166,17 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
               </p>
             </div>
             <p className="text-slate-500 text-sm mb-4">
-              Stand in a confident stance, take deep breaths, and run through your opening. 
+              Stand in a confident stance, take deep breaths, and run through your opening.
               This will help channel nervous energy into confidence.
             </p>
             <Button
               onClick={() => setHabitMarked(true)}
               disabled={habitMarked}
               variant="outline"
-              className={`w-full rounded-2xl shadow-[2px_2px_8px_rgba(163,177,198,0.1),-2px_-2px_8px_rgba(255,255,255,0.5)] ${
-                habitMarked
+              className={`w-full rounded-2xl shadow-[2px_2px_8px_rgba(163,177,198,0.1),-2px_-2px_8px_rgba(255,255,255,0.5)] ${habitMarked
                   ? 'bg-gradient-to-r from-teal-400/60 to-blue-400/60 text-white border-0 cursor-not-allowed'
                   : 'border-teal-200/50 hover:bg-teal-50/30 text-slate-600'
-              }`}
+                }`}
             >
               {habitMarked ? (
                 <>
@@ -213,11 +211,11 @@ export function ResultsScreen({ onRegenerate, onBack }: ResultsScreenProps) {
             <div className="bg-gradient-to-br from-purple-100/50 via-pink-50/40 to-purple-50/50 backdrop-blur-sm rounded-3xl p-6 mb-6 shadow-[inset_3px_3px_12px_rgba(192,132,252,0.08),inset_-2px_-2px_8px_rgba(255,255,255,0.6)] border border-white/40 relative overflow-hidden">
               {/* Subtle background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 via-transparent to-pink-200/20 blur-2xl" />
-              
+
               <div className="relative flex items-center gap-6">
                 {/* Album Art / Visualizer Placeholder */}
-                <motion.div 
-                  animate={{ 
+                <motion.div
+                  animate={{
                     boxShadow: [
                       '4px 4px 16px rgba(192,132,252,0.2), -2px -2px 12px rgba(255,255,255,0.6)',
                       '6px 6px 20px rgba(236,72,153,0.25), -3px -3px 14px rgba(255,255,255,0.7)',

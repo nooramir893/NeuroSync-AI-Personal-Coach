@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Home, History, Settings } from 'lucide-react';
 
 interface BottomNavProps {
@@ -22,7 +22,7 @@ export function BottomNav({ currentScreen, onNavigate, darkMode }: BottomNavProp
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentScreen === item.id;
-              
+
               return (
                 <button
                   key={item.id}
@@ -35,23 +35,21 @@ export function BottomNav({ currentScreen, onNavigate, darkMode }: BottomNavProp
                       className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full bg-gradient-to-r from-teal-500 to-blue-500"
                     />
                   )}
-                  <div className={`p-3 rounded-2xl transition-colors ${
-                    isActive
+                  <div className={`p-3 rounded-2xl transition-colors ${isActive
                       ? 'bg-gradient-to-br from-teal-500 to-blue-500 border-b-4 border-teal-300'
                       : darkMode
-                      ? 'text-slate-400 hover:bg-slate-700'
-                      : 'text-slate-600 hover:bg-slate-100'
-                  }`}>
+                        ? 'text-slate-400 hover:bg-slate-700'
+                        : 'text-slate-600 hover:bg-slate-100'
+                    }`}>
                     <Icon className={`size-5 ${isActive ? 'text-white' : ''}`} />
                   </div>
                   <span
-                    className={`text-xs ${
-                      isActive
+                    className={`text-xs ${isActive
                         ? 'bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent'
                         : darkMode
-                        ? 'text-slate-400'
-                        : 'text-slate-600'
-                    }`}
+                          ? 'text-slate-400'
+                          : 'text-slate-600'
+                      }`}
                   >
                     {item.label}
                   </span>

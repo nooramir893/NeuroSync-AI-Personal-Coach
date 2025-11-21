@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Brain, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -8,7 +8,7 @@ interface WelcomeLandingScreenProps {
 
 export function WelcomeLandingScreen({ onGetStarted }: WelcomeLandingScreenProps) {
   return (
-    <div 
+    <div
       className="min-h-screen flex flex-col items-center justify-center px-4 py-12 cursor-pointer"
       onClick={onGetStarted}
     >

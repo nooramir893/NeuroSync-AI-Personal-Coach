@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 interface WaveformAnimationProps {
   isActive: boolean;
@@ -16,10 +16,10 @@ export function WaveformAnimation({ isActive }: WaveformAnimationProps) {
           animate={{
             height: isActive
               ? [
-                  Math.random() * 60 + 20,
-                  Math.random() * 60 + 20,
-                  Math.random() * 60 + 20,
-                ]
+                Math.random() * 60 + 20,
+                Math.random() * 60 + 20,
+                Math.random() * 60 + 20,
+              ]
               : [8, 8, 8],
           }}
           transition={{
