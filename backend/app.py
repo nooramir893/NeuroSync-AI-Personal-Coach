@@ -92,7 +92,8 @@ async def root():
 
 @app.post("/api/transcribe")
 async def transcribe_audio(request: TranscriptionRequest):
-    print(f"🎤 Starting transcription for audio: {request.audioId}")
+    print(f"🎤 [DEBUG] Received transcription request for audio: {request.audioId}")
+    print(f"🎤 [DEBUG] Audio URL: {request.audioUrl}")
     try:
         # STEP 1: Update status to processing
         supabase.table("audio_recordings").update({
@@ -159,6 +160,9 @@ async def transcribe_audio(request: TranscriptionRequest):
             "transcriptionTimeMs": transcription_time
         }
     except Exception as e:
+        print(f"❌ [DEBUG] Transcription error details: {type(e).__name__}: {str(e)}")
+        import traceback
+        traceback.print_exc()
         print(f"❌ Transcription error: {str(e)}")
         # Update database with error status
         try:
