@@ -2,7 +2,7 @@ fastapi
 uvicorn
 supabase
 python-dotenv
-groq
+assemblyai
 httpx
 pydantic
 
