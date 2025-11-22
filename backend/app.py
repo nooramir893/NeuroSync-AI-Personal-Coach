@@ -117,7 +117,7 @@ async def transcribe_audio(request: TranscriptionRequest):
             transcription = groq_client.audio.transcriptions.create(
                 file=(f"{request.audioId}.webm", audio_file.read()),
                 model="whisper-large-v3-turbo",
-                language="en",  # Change to 'ur' for Urdu, or remove for auto-detect
+                # language="en",  # Removed to allow auto-detect
                 response_format="verbose_json",
                 temperature=0.0  # Most accurate
             )
